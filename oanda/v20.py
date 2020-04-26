@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import v20, configparser, oandapy
 import pandas as pd
@@ -56,27 +56,24 @@ class V20Conn():
       ''' % (self.account_id, self.hostname, self.port, self.instrument, self.units)
     )
     
-  def GetHistory(self, _from, _to, granularity):
+  def GetHistory(self, _from, _to, granularity, count):
     _ret = self.api.get_history(
       instrument=self.instrument,
       units = self.units,
       granularity= granularity,
       # start=_from,
       # end=_to,
-      count=2
+      count=count
     )
     return(_ret)
     
 
 def main():
   test = V20Conn()
-  # test.PrintConfig()
-  _s1 = test.GetHistory("2020-04-23","2020-04-24", "S5")
-  # print(_s1['candles'])
+  _s1 = test.GetHistory("2020-04-23","2020-04-24", "S5", 10)
   _len = len(_s1['candles'])
   df = pd.DataFrame(_s1['candles'])
   print(df)
-  print("Length: %s" % (_len))
 
 if __name__ == "__main__":
     main()
