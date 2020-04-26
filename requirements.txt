@@ -1,7 +1,14 @@
+certifi==2020.4.5.1
+chardet==3.0.4
 configparser==4.0.2
+idna==2.9
 numpy==1.18.3
-oandapyV20==0.6.3
+oandapy==0.1
 pandas==0.24.2
 python-dateutil==2.8.1
 pytz==2019.3
+requests==2.23.0
 six==1.14.0
+ujson==2.0.3
+urllib3==1.25.9
+v20==3.0.25.0
