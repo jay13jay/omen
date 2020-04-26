@@ -63,7 +63,7 @@ class V20Conn():
       granularity= granularity,
       # start=_from,
       # end=_to,
-      count=1000
+      count=2
     )
     return(_ret)
     
