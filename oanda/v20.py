@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import v20, configparser, oandapy
+import pandas as pd
 
 
 class V20Conn():
@@ -55,13 +56,13 @@ class V20Conn():
       ''' % (self.account_id, self.hostname, self.port, self.instrument, self.units)
     )
     
-  def GetHistory(self,_from,_to):
+  def GetHistory(self, _from, _to, granularity):
     _ret = self.api.get_history(
       instrument=self.instrument,
       units = self.units,
-      granularity= "S5",
+      granularity= granularity,
       # start=_from,
-      end=_to,
+      # end=_to,
       count=1000
     )
     return(_ret)
@@ -70,6 +71,5 @@ class V20Conn():
 
 test = V20Conn()
 # test.PrintConfig()
-_s1 = test.GetHistory("2020-04-23","2020-04-24")
-print("type:\t\t",type(_s1))
+_s1 = test.GetHistory("2020-04-23","2020-04-24", "S5")
 print(_s1)
