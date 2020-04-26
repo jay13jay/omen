@@ -68,8 +68,15 @@ class V20Conn():
     return(_ret)
     
 
+def main():
+  test = V20Conn()
+  # test.PrintConfig()
+  _s1 = test.GetHistory("2020-04-23","2020-04-24", "S5")
+  # print(_s1['candles'])
+  _len = len(_s1['candles'])
+  df = pd.DataFrame(_s1['candles'])
+  print(df)
+  print("Length: %s" % (_len))
 
-test = V20Conn()
-# test.PrintConfig()
-_s1 = test.GetHistory("2020-04-23","2020-04-24", "S5")
-print(_s1)
+if __name__ == "__main__":
+    main()
