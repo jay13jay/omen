@@ -2,4 +2,4 @@ deploy/local/.vagrant/*
 oanda.cfg
 *__pycache__*
 
-sma.png
+*/images/matplot_out/*

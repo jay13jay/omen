@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from datetime import datetime
 import re
 
-
+image_dir = "images/matplot_out/"
 
 def main():
   test = V20Conn()
@@ -46,16 +46,19 @@ def main():
   plt.plot(_graph['_askRollingAvg_6'],label='SMA 6 Periods Ask')
   plt.legend(loc=2)
   # plt.show()
-  # Create filename
-  print('date first:\t',datetime.now())
-  rightnow = str(datetime.now()).replace(" ", "_")
-  print('date before regex:\t',rightnow)
-  rightnow =re.sub(r"\.[0-9]*", "", rightnow)
-  print('date after regex:\t',rightnow)
 
-  filename = str(rightnow+'.png')
+  # Create filename
+  # print('date first:\t',datetime.now())
+  # rightnow = str(datetime.now()).replace(" ", "_")
+  # print('date before regex:\t',rightnow)
+  # rightnow =re.sub(r"\.[0-9]*", "", rightnow)
+  # print('date after regex:\t',rightnow)
+
+  filename = image_dir + datetime.now().strftime("%d-%m-%Y_%I-%M-%S_%p")
+
+  # filename = str(rightnow+'.png')
   print("filename:\t",filename)
-  plt.savefig(filename)
+  plt.savefig(str(filename))
 
 
 if __name__ == "__main__":
