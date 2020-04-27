@@ -2,6 +2,8 @@
 from v20 import V20Conn
 import pandas as pd
 import matplotlib.pyplot as plt
+from datetime import datetime
+import re
 
 
 
@@ -24,11 +26,11 @@ def main():
   _graph["_askRollingAvg_3"] = _candles["closeAsk"].rolling(window=20).mean()
   _graph["_bidRollingAvg_3"] = _candles["closeBid"].rolling(window=3).mean()
 
-  _graph["_askRollingAvg_6"] = _candles["closeAsk"].rolling(window=40).mean()
+  _graph["_askRollingAvg_6"] = _candles["closeAsk"].rolling(window=30).mean()
   _graph["_bidRollingAvg_6"] = _candles["closeBid"].rolling(window=6).mean()
 
 
-  print("\nGraph DataFrame:\n\n",_graph.head(10))
+  print("\nGraph DataFrame:\n\n",_graph.tail(10))
   print(
       '''
       Closing Ask Average:\t%s
@@ -43,7 +45,17 @@ def main():
   plt.plot(_graph['_askRollingAvg_3'],label='SMA 3 Periods Ask')
   plt.plot(_graph['_askRollingAvg_6'],label='SMA 6 Periods Ask')
   plt.legend(loc=2)
-  plt.show()
+  # plt.show()
+  # Create filename
+  print('date first:\t',datetime.now())
+  rightnow = str(datetime.now()).replace(" ", "_")
+  print('date before regex:\t',rightnow)
+  rightnow =re.sub(r"\.[0-9]*", "", rightnow)
+  print('date after regex:\t',rightnow)
+
+  filename = str(rightnow+'.png')
+  print("filename:\t",filename)
+  plt.savefig(filename)
 
 
 if __name__ == "__main__":
