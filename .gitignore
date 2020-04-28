@@ -3,3 +3,4 @@ oanda.cfg
 *__pycache__*
 
 */images/matplot_out/*
+/deploy/virtualenv/*

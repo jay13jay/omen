@@ -1,5 +1,11 @@
 #!/bin/bash
 
-apt-get update
-apt-get install python3-pip
-pip3 install -r requirements.txt
+echo `whoami`
+echo `pwd`
+
+sudo apt-get update -y
+sudo apt-get install python3-pip -y
+pip3 install -r requirements.txt --user
+
+echo `whoami`
+echo `pwd`
