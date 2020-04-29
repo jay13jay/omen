@@ -4,3 +4,5 @@ oanda.cfg
 
 */images/matplot_out/*
 /deploy/virtualenv/*
+
+*.pyc
